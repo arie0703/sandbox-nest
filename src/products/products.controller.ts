@@ -9,7 +9,7 @@ export class ProductsController {
   @ApiResponse({ status: HttpStatus.CREATED })
   @Post(':productName')
   @HttpCode(HttpStatus.CREATED)
-  postItem(@Param('productName') productName: string): Promise<object> {
+  createProduct(@Param('productName') productName: string): Promise<object> {
     return this.productsService.createProduct(productName);
   }
 }

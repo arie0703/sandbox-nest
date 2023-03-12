@@ -35,12 +35,19 @@ export class ProductsService {
     try {
       const res = await this.documentClient.send(new PutCommand(params));
       console.log(res);
+
+      const requestID: string = res.$metadata.requestId;
+
       return {
         httpStatus: HttpStatus.CREATED,
         message: 'success',
-        body: res,
+        body: {
+          requestID: requestID,
+          Item: productName,
+        },
       };
     } catch (err) {
+      console.log(err);
       throw new HttpException(
         {
           httpStatus: HttpStatus.INTERNAL_SERVER_ERROR,
