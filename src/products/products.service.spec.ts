@@ -38,16 +38,16 @@ jest.mock('@aws-sdk/lib-dynamodb', () => {
 describe('ProductsService', () => {
   let service: ProductsService;
 
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      imports: [ConfigModule],
+      providers: [ProductsService],
+    }).compile();
+    service = module.get<ProductsService>(ProductsService);
+  });
+
   describe('正常系テスト', () => {
-    beforeEach(async () => {
-      const module: TestingModule = await Test.createTestingModule({
-        imports: [ConfigModule],
-        providers: [ProductsService],
-      }).compile();
-
-      service = module.get<ProductsService>(ProductsService);
-    });
-
+    
     it('文字列をcreateProductメソッドへ渡したとき', async () => {
       const productName = 'チョコレートバー';
 
@@ -65,14 +65,6 @@ describe('ProductsService', () => {
   });
 
   describe('異常系テスト', () => {
-    beforeEach(async () => {
-      const module: TestingModule = await Test.createTestingModule({
-        imports: [ConfigModule, ProductsModule],
-        providers: [ProductsService],
-      }).compile();
-
-      service = module.get<ProductsService>(ProductsService);
-    });
 
     it('文字列をcreateProductメソッドへ渡したとき', async () => {
       const productName = 'チョコレートバー';
