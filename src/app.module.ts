@@ -6,6 +6,8 @@ import { ProductsService } from './products/products.service';
 import { ProductsModule } from './products/products.module';
 import { ConfigModule } from '@nestjs/config';
 import { validate } from './config/env-validator';
+import { SlackWorkflowController } from './slack-workflow/slack-workflow.controller';
+import { SlackWorkflowService } from './slack-workflow/slack-workflow.service';
 
 @Module({
   imports: [
@@ -15,7 +17,7 @@ import { validate } from './config/env-validator';
       validate,
     }),
   ],
-  controllers: [AppController, ProductsController],
-  providers: [AppService, ProductsService],
+  controllers: [AppController, ProductsController, SlackWorkflowController],
+  providers: [AppService, ProductsService, SlackWorkflowService],
 })
 export class AppModule {}
