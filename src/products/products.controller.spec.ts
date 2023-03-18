@@ -52,10 +52,7 @@ describe('ProductsController', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [
-        ConfigModule,
-        ProductsModule,
-      ],
+      imports: [ConfigModule, ProductsModule],
       controllers: [ProductsController],
       providers: [mockedProductsService],
     }).compile();
