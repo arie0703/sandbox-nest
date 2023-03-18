@@ -47,7 +47,6 @@ describe('ProductsService', () => {
   });
 
   describe('正常系テスト', () => {
-    
     it('文字列をcreateProductメソッドへ渡したとき', async () => {
       const productName = 'チョコレートバー';
 
@@ -65,7 +64,6 @@ describe('ProductsService', () => {
   });
 
   describe('異常系テスト', () => {
-
     it('文字列をcreateProductメソッドへ渡したとき', async () => {
       const productName = 'チョコレートバー';
       await expect(service.createProduct(productName)).rejects.toThrow();

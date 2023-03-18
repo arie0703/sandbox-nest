@@ -4,7 +4,6 @@ import { validateSync } from 'class-validator';
 
 // 環境変数のバリデーション
 export class EnvValidator {
-
   @IsNotEmpty()
   @IsString()
   @IsDefined()
