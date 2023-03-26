@@ -8,6 +8,9 @@ import { ConfigModule } from '@nestjs/config';
 import { validate } from './config/env-validator';
 import { SlackWorkflowController } from './slack-workflow/slack-workflow.controller';
 import { SlackWorkflowService } from './slack-workflow/slack-workflow.service';
+import { SqsQueueController } from './sqs-queue/sqs-queue.controller';
+import { SqsQueueService } from './sqs-queue/sqs-queue.service';
+import { SqsQueueModule } from './sqs-queue/sqs-queue.module';
 
 @Module({
   imports: [
@@ -16,8 +19,19 @@ import { SlackWorkflowService } from './slack-workflow/slack-workflow.service';
       isGlobal: true,
       validate,
     }),
+    SqsQueueModule,
   ],
-  controllers: [AppController, ProductsController, SlackWorkflowController],
-  providers: [AppService, ProductsService, SlackWorkflowService],
+  controllers: [
+    AppController,
+    ProductsController,
+    SlackWorkflowController,
+    SqsQueueController,
+  ],
+  providers: [
+    AppService,
+    ProductsService,
+    SlackWorkflowService,
+    SqsQueueService,
+  ],
 })
 export class AppModule {}
