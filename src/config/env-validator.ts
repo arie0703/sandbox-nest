@@ -7,12 +7,12 @@ export class EnvValidator {
   @IsNotEmpty()
   @IsString()
   @IsDefined()
-  AWS_DYNAMODB_REGION: string;
+  AWS_LOCALSTACK_REGION: string;
 
   @IsNotEmpty()
   @IsString()
   @IsDefined()
-  AWS_DYNAMODB_ENDPOINT: string;
+  AWS_LOCALSTACK_ENDPOINT: string;
 
   @IsNotEmpty()
   @IsString()
@@ -23,6 +23,16 @@ export class EnvValidator {
   @IsString()
   @IsDefined()
   AWS_SECRET_ACCESS_KEY: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @IsDefined()
+  SQS_QUEUE_URL: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @IsDefined()
+  SLACK_WORKFLOW_URL: string;
 }
 
 /**

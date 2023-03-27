@@ -14,7 +14,7 @@ import { SqsQueueService } from './sqs-queue.service';
             {
               name: 'sqs-queue',
               queueUrl: configService.get<string>('SQS_QUEUE_URL'),
-              region: configService.get<string>('AWS_DYNAMODB_REGION'),
+              region: configService.get<string>('AWS_LOCALSTACK_REGION'),
             },
           ],
         };

@@ -9,8 +9,8 @@ export class ProductsService {
   tableName: string;
   constructor(private readonly configService: ConfigService) {
     const dbClient = new DynamoDBClient({
-      region: this.configService.get<string>('AWS_DYNAMODB_REGION'),
-      endpoint: this.configService.get<string>('AWS_DYNAMODB_ENDPOINT'),
+      region: this.configService.get<string>('AWS_LOCALSTACK_REGION'),
+      endpoint: this.configService.get<string>('AWS_LOCALSTACK_ENDPOINT'),
       credentials: {
         accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID'),
         secretAccessKey: this.configService.get<string>(
