@@ -11,6 +11,8 @@ import { SlackWorkflowService } from './slack-workflow/slack-workflow.service';
 import { SqsQueueController } from './sqs-queue/sqs-queue.controller';
 import { SqsQueueService } from './sqs-queue/sqs-queue.service';
 import { SqsQueueModule } from './sqs-queue/sqs-queue.module';
+import { EmailsController } from './emails/emails.controller';
+import { EmailsModule } from './emails/emails.module';
 
 @Module({
   imports: [
@@ -20,6 +22,7 @@ import { SqsQueueModule } from './sqs-queue/sqs-queue.module';
       validate,
     }),
     SqsQueueModule,
+    EmailsModule,
   ],
   controllers: [
     AppController,
