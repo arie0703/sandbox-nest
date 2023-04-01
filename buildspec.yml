@@ -14,7 +14,7 @@ phases:
     commands:
       - echo "ビルド開始"
       - docker build -t sandbox-cicd .
-      - docker tag sandbox-cicd:latest $IMAGE
+      - docker tag $IMAGE
       - docker push $IMAGE
   post_build:
     commands:
