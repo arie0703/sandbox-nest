@@ -9,7 +9,7 @@ phases:
       - echo "認証開始"
       - REPO_URI=906124551921.dkr.ecr.ap-northeast-1.amazonaws.com/sandbox-cicd
       - aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin $REPO_URI
-      - IMAGE=$REPO_URI:latest
+      - IMAGE=${REPO_URI}:latest
   build:
     commands:
       - echo "ビルド開始"
