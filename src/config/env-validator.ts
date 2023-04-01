@@ -7,6 +7,11 @@ export class EnvValidator {
   @IsNotEmpty()
   @IsString()
   @IsDefined()
+  ENV: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @IsDefined()
   AWS_LOCALSTACK_REGION: string;
 
   @IsNotEmpty()
