@@ -1,0 +1,22 @@
+version: 0.0
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+  pre_build:
+    commands:
+      - REPO_URI=906124551921.dkr.ecr.ap-northeast-1.amazonaws.com/sandbox-cicd
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPO_URI
+      - IMAGE=$REPO_URI:latest
+  build:
+    commands:
+      - docker build -t sandbox-cicd .
+      - docker tag sandbox-cicd:latest $IMAGE
+      - docker push $IMAGE
+  post_build:
+    commands:
+      - printf '{"ImageURI":"%s"}' $IMAGE > imageDetail.json
+  artifacts:
+    files:
+      - imageDetail.json
