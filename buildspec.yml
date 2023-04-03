@@ -19,6 +19,8 @@ phases:
     commands:
       - echo "imageDetail.jsonの生成"
       - printf '{"ImageURI":"%s"}' $IMAGE > imageDetail.json
+      - envsubst < taskdef_template.json > taskdef.json
 artifacts:
   files:
     - imageDetail.json
+    - taskdef.json
