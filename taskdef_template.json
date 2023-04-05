@@ -44,5 +44,14 @@
   "networkMode": "awsvpc",
   "cpu": "256",
   "memory": "512",
-  "family": "sandbox-cicd"
+  "family": "sandbox-cicd",
+  "logConfiguration": {
+    "logDriver": "awslogs",
+    "options": {
+        "awslogs-group": "firelens-container",
+        "awslogs-region": "ap-northeast-1",
+        "awslogs-create-group": "true",
+        "awslogs-stream-prefix": "firelens"
+    }
+  }
 }
