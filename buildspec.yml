@@ -1,0 +1,26 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+  pre_build:
+    commands:
+      - echo "認証開始"
+      - REPO_URI=906124551921.dkr.ecr.ap-northeast-1.amazonaws.com/sandbox-cicd
+      - aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 906124551921.dkr.ecr.ap-northeast-1.amazonaws.com
+      - IMAGE=${REPO_URI}:latest
+  build:
+    commands:
+      - echo "ビルド開始"
+      - docker build -t sandbox-cicd .
+      - docker tag sandbox-cicd:latest $IMAGE
+      - docker push $IMAGE
+  post_build:
+    commands:
+      - echo "imageDetail.jsonの生成"
+      - printf '{"Version":"1.0", "ImageURI":"%s"}' $IMAGE > imageDetail.json
+      - envsubst < taskdef_template.json > taskdef.json
+artifacts:
+  files:
+    - imageDetail.json
+    - taskdef.json

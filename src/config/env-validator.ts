@@ -4,24 +4,14 @@ import { validateSync } from 'class-validator';
 
 // 環境変数のバリデーション
 export class EnvValidator {
-  @IsNotEmpty()
-  @IsString()
-  @IsDefined()
+  ENV: string;
+
   AWS_LOCALSTACK_REGION: string;
 
-  @IsNotEmpty()
-  @IsString()
-  @IsDefined()
   AWS_LOCALSTACK_ENDPOINT: string;
 
-  @IsNotEmpty()
-  @IsString()
-  @IsDefined()
   AWS_ACCESS_KEY_ID: string;
 
-  @IsNotEmpty()
-  @IsString()
-  @IsDefined()
   AWS_SECRET_ACCESS_KEY: string;
 
   @IsNotEmpty()
