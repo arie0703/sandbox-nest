@@ -11,8 +11,8 @@ import { SlackWorkflowService } from './slack-workflow/slack-workflow.service';
 import { SqsQueueController } from './sqs-queue/sqs-queue.controller';
 import { SqsQueueService } from './sqs-queue/sqs-queue.service';
 import { SqsQueueModule } from './sqs-queue/sqs-queue.module';
-import { EmailsController } from './emails/emails.controller';
 import { EmailsModule } from './emails/emails.module';
+import { NotionViewModule } from './notion-view/notion-view.module';
 
 @Module({
   imports: [
@@ -23,6 +23,7 @@ import { EmailsModule } from './emails/emails.module';
     }),
     SqsQueueModule,
     EmailsModule,
+    NotionViewModule,
   ],
   controllers: [
     AppController,
