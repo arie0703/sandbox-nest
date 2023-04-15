@@ -34,6 +34,14 @@
           "value": "$SLACK_WORKFLOW_URL"
         },
         {
+          "name": "NOTION_SECRET",
+          "value": "$NOTION_SECRET"
+        },
+        {
+          "name": "NOTION_DATABASE_ID",
+          "value": "$NOTION_DATABASE_ID"
+        },
+        {
           "name": "PORT",
           "value": "80"
         }
