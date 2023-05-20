@@ -44,6 +44,20 @@
         {
           "name": "PORT",
           "value": "80"
+        },
+        {
+          "name": "NEW_RELIC_APP_NAME",
+          "value": "$NEW_RELIC_APP_NAME"
+        },
+        {
+          "name": "NEW_RELIC_DISTRIBUTED_TRACING_ENABLED",
+          "value": "true"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "NEW_RELIC_LICENSE_KEY",
+          "valueFrom": "$NEW_RELIC_LICENSE_KEY"
         }
       ],
       "logConfiguration": {
@@ -55,6 +69,40 @@
           "awslogs-stream-prefix": "firelens"
         }
       }
+    },
+    {
+      "name": "newrelic-infra",
+      "image": "newrelic/nri-ecs:1.9.9",
+      "cpu": 256,
+      "memoryReservation": 512,
+      "environment": [
+        {
+          "name": "NRIA_OVERRIDE_HOST_ROOT",
+          "value": ""
+        },
+        {
+          "name": "NRIA_IS_FORWARD_ONLY",
+          "value": "true"
+        },
+        {
+          "name": "FARGATE",
+          "value": "true"
+        },
+        {
+          "name": "NRIA_PASSTHROUGH_ENVIRONMENT",
+          "value": "ECS_CONTAINER_METADATA_URI,ECS_CONTAINER_METADATA_URI_V4,FARGATE"
+        },
+        {
+          "name": "NRIA_CUSTOM_ATTRIBUTES",
+          "value": "{\"nrDeployMethod\":\"downloadPage\"}"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "NRIA_LICENSE_KEY",
+          "valueFrom": "$NEW_RELIC_LICENSE_KEY"
+        }
+      ]
     }
   ],
   "requiresCompatibilities": ["FARGATE"],
