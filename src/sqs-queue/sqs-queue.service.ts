@@ -5,7 +5,11 @@ import { NewRelicService } from 'src/utils/newrelic/newrelic.service';
 @Injectable()
 export class SqsQueueService {
   apiName: string;
-  constructor(private readonly sqsService: SqsService, private readonly newrelicService: NewRelicService,private readonly configService: ConfigService) {}
+  constructor(
+    private readonly sqsService: SqsService,
+    private readonly newrelicService: NewRelicService,
+    private readonly configService: ConfigService,
+  ) {}
 
   /**
    * SQSにキューを登録する

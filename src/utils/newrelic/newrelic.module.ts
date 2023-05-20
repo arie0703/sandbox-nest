@@ -3,6 +3,6 @@ import { NewRelicService } from './newrelic.service';
 
 @Module({
   providers: [NewRelicService],
-  exports: [NewRelicService]
+  exports: [NewRelicService],
 })
 export class NewRelicModule {}

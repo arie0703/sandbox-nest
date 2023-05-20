@@ -12,11 +12,11 @@ export class NewRelicService {
       string | number | string[] | undefined
     > = {};
     const attributes: AWS.SQS.MessageBodyAttributeMap = {};
-    
+
     try {
       // 現在のアプリ情報を格納する
       newrelic.getTransaction().insertDistributedTraceHeaders(currentHeaders);
-      
+
       Object.entries(currentHeaders).forEach((header) => {
         if (typeof header[1] === 'string') {
           attributes[header[0]] = {
@@ -25,11 +25,11 @@ export class NewRelicService {
           };
         }
       });
-      console.log(attributes)
+      console.log(attributes);
     } catch {
       // NewRelicの認証に失敗時などは空のAttributeを返す
-      console.log("MessageAttributeの生成に失敗しました")
-      return {}
+      console.log('MessageAttributeの生成に失敗しました');
+      return {};
     }
 
     return attributes;

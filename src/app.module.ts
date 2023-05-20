@@ -19,11 +19,7 @@ import { NotionViewModule } from './notion-view/notion-view.module';
     EmailsModule,
     NotionViewModule,
   ],
-  controllers: [
-    AppController,
-  ],
-  providers: [
-    AppService,
-  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

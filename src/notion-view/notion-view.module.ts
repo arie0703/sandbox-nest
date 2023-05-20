@@ -6,6 +6,6 @@ import { NotionViewService } from './notion-view.service';
 @Module({
   imports: [ConfigModule],
   controllers: [NotionViewController],
-  providers: [NotionViewService]
+  providers: [NotionViewService],
 })
 export class NotionViewModule {}

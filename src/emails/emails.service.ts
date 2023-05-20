@@ -1,5 +1,9 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { DynamoDBDocumentClient, PutCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
+import {
+  DynamoDBDocumentClient,
+  PutCommand,
+  ScanCommand,
+} from '@aws-sdk/lib-dynamodb';
 import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { EmailRequest } from 'src/dto/email-request.dto';
@@ -42,10 +46,9 @@ export class EmailsService {
    * @return {Promise<object>} 登録したメールアドレスやステータスコード、およびメッセージが含まれる
    */
   async register(request: EmailRequest): Promise<object> {
-
     const email: string = request.email;
     const hashedEmail = this.makeHash(email);
-    
+
     const params = {
       TableName: this.tableName,
       Item: {
@@ -65,7 +68,7 @@ export class EmailsService {
         body: {
           requestID: requestID,
           email: email,
-          hashedEmail: hashedEmail
+          hashedEmail: hashedEmail,
         },
       };
     } catch (err) {
@@ -81,12 +84,11 @@ export class EmailsService {
     }
   }
 
-    /**
+  /**
    * メールアドレス一覧を取得する
    * @return {Promise<object>} メールアドレス一覧やステータスコード、およびメッセージが含まれる
    */
   async getAll(): Promise<object> {
-
     const params = {
       TableName: this.tableName,
     };
@@ -96,7 +98,7 @@ export class EmailsService {
       return {
         httpStatus: HttpStatus.OK,
         message: 'success',
-        result: res.Items
+        result: res.Items,
       };
     } catch (err) {
       throw new HttpException(
@@ -106,8 +108,7 @@ export class EmailsService {
           body: err,
         },
         HttpStatus.INTERNAL_SERVER_ERROR,
-    )}
-    
-
+      );
+    }
   }
 }
