@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { SqsModule } from '@ssut/nestjs-sqs';
+import { NewRelicModule } from 'src/utils/newrelic/newrelic.module';
 import { SqsQueueController } from './sqs-queue.controller';
 import { SqsQueueService } from './sqs-queue.service';
 
 @Module({
   imports: [
+    NewRelicModule,
     SqsModule.registerAsync({
       useFactory: async (configService: ConfigService) => {
         return {

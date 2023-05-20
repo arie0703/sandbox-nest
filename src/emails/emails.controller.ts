@@ -1,4 +1,11 @@
-import { Controller, HttpCode, HttpStatus, Post, Body, Get } from '@nestjs/common';
+import {
+  Controller,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Body,
+  Get,
+} from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
 import { EmailRequest } from 'src/dto/email-request.dto';
 import { EmailsService } from './emails.service';

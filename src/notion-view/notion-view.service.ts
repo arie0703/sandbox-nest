@@ -12,43 +12,40 @@ export class NotionViewService {
   }
 
   async createView(request: NotionRequest): Promise<object> {
-    
     const notion = new Client({
       auth: this.notionSecret,
-    })
+    });
 
     const params = {
-      "parent": { "database_id": this.databaseID },
-      "properties": {
-        "title": {
-          "title": [
-            { "text": { "content": request.title } }
-          ]
+      parent: { database_id: this.databaseID },
+      properties: {
+        title: {
+          title: [{ text: { content: request.title } }],
         },
-        "期限": {
-          "date": {
-            "start": request.deadline
-          }
+        期限: {
+          date: {
+            start: request.deadline,
+          },
         },
-        "URL": {
-          "url": request.url
-        }
-      }
+        URL: {
+          url: request.url,
+        },
+      },
     };
-    
+
     try {
       const res = await notion.pages.create(params);
       return {
         httpStatus: HttpStatus.CREATED,
         message: 'ページを追加しました',
-        body: res
-      }
+        body: res,
+      };
     } catch (err) {
       throw {
         status: HttpStatus.INTERNAL_SERVER_ERROR,
         message: 'error!',
-        body: err
-      }
+        body: err,
+      };
     }
   }
 }
