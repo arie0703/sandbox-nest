@@ -6,8 +6,8 @@ phases:
   pre_build:
     commands:
       - echo "認証開始"
-      - REPO_URI=906124551921.dkr.ecr.ap-northeast-1.amazonaws.com/sandbox-cicd
-      - aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 906124551921.dkr.ecr.ap-northeast-1.amazonaws.com
+      - REPO_URI=${AWS_ACCOUNT_ID}.dkr.ecr.ap-northeast-1.amazonaws.com/sandbox-nest
+      - aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.ap-northeast-1.amazonaws.com
       - IMAGE=${REPO_URI}:latest
   build:
     commands:
