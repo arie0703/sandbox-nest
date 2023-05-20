@@ -1,8 +1,8 @@
 {
-  "executionRoleArn": "arn:aws:iam::906124551921:role/sandbox-cicd-task-execution-role",
+  "executionRoleArn": "$TASK_EXECUTION_ROLE_ARN",
   "containerDefinitions": [
     {
-      "name": "sandbox-cicd",
+      "name": "sandbox-nest",
       "image": "<IMAGE_NAME>",
       "essential": true,
       "portMappings": [
@@ -109,5 +109,5 @@
   "networkMode": "awsvpc",
   "cpu": "512",
   "memory": "1024",
-  "family": "sandbox-cicd"
+  "family": "$TASK_FAMILY"
 }
