@@ -35,10 +35,6 @@
           "value": "$SLACK_WORKFLOW_URL"
         },
         {
-          "name": "NOTION_SECRET",
-          "value": "$NOTION_SECRET"
-        },
-        {
           "name": "NOTION_DATABASE_ID",
           "value": "$NOTION_DATABASE_ID"
         },
@@ -56,6 +52,10 @@
         }
       ],
       "secrets": [
+        {
+          "name": "NOTION_SECRET",
+          "valueFrom": "$NOTION_SECRET"
+        },
         {
           "name": "NEW_RELIC_LICENSE_KEY",
           "valueFrom": "$NEW_RELIC_LICENSE_KEY"
