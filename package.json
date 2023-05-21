@@ -8,9 +8,9 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "NEW_RELIC_APP_NAME=sandbox-nest NEW_RELIC_LICENSE_KEY=dummy nest start",
-    "start:dev": "NEW_RELIC_APP_NAME=sandbox-nest NEW_RELIC_LICENSE_KEY=dummy  nest start --watch",
-    "start:debug": "NEW_RELIC_APP_NAME=sandbox-nest NEW_RELIC_LICENSE_KEY=dummy  nest start --debug --watch",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",

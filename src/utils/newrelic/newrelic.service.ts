@@ -1,7 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { newrelic } from 'newrelic';
+
 @Injectable()
 export class NewRelicService {
+  newrelic: any;
+
+  // importではなくrequireで呼び出さないと動かない
+  // クラス呼び出し時にconstructorで呼び出さないと、LICENSE_KEY等の環境変数より先にrequireが呼び出され、認証が通らなくなる。
+  constructor() {
+    this.newrelic = require('newrelic');
+  } 
+
   /**
    * SQS監視に必要な情報を生成する
    * @returns {AWS.SQS.MessageBodyAttributeMap} SQSのmessageAttributes
@@ -12,11 +20,12 @@ export class NewRelicService {
       string | number | string[] | undefined
     > = {};
     const attributes: AWS.SQS.MessageBodyAttributeMap = {};
+    // importではなくrequireで定義しないと動かない。
 
     try {
       // 現在のアプリ情報を格納する
-      newrelic.getTransaction().insertDistributedTraceHeaders(currentHeaders);
-
+      this.newrelic.getTransaction().insertDistributedTraceHeaders(currentHeaders);
+      
       Object.entries(currentHeaders).forEach((header) => {
         if (typeof header[1] === 'string') {
           attributes[header[0]] = {
@@ -26,10 +35,10 @@ export class NewRelicService {
         }
       });
       console.log(attributes);
-    } catch {
-      // NewRelicの認証に失敗時などは空のAttributeを返す
+    } catch (err) {
+      // SQS監視用のAttributesが取得できない場合はエラー出力して、空のままオブジェクトを返す
       console.log('MessageAttributeの生成に失敗しました');
-      return {};
+      console.log(err);
     }
 
     return attributes;
