@@ -14,7 +14,7 @@ import { SqsQueueService } from './sqs-queue.service';
           consumers: [],
           producers: [
             {
-              name: 'sqs-queue',
+              name: 'sandbox-nest',
               queueUrl: configService.get<string>('SQS_QUEUE_URL'),
               region: configService.get<string>('AWS_LOCALSTACK_REGION'),
             },
