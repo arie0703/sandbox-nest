@@ -1,5 +1,6 @@
 locals {
-  app_name = "sandbox-nest"
+  app_name            = "sandbox-nest"
+  newrelic_accound_id = 3575918
 }
 
 variable "aws_account_id" {
