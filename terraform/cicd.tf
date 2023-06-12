@@ -163,8 +163,13 @@ resource "aws_codebuild_project" "this" {
     }
 
     environment_variable {
-      name  = "TASK_FAMILY"
-      value = aws_ecs_task_definition.this.family
+      name  = "NEW_RELIC_ACCOUNT_ID"
+      value = local.newrelic_accound_id
+    }
+
+    environment_variable {
+      name  = "NEW_RELIC_TRUSTED_ACCOUNT_KEY"
+      value = local.newrelic_accound_id
     }
 
     environment_variable {
