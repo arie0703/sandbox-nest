@@ -6,7 +6,7 @@ import {
 } from '@aws-sdk/lib-dynamodb';
 import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { EmailRequest } from 'src/dto/email-request.dto';
+import { EmailRequest } from 'src/localstack/dynamodb/emails/dto/email-request.dto';
 import * as crypto from 'crypto';
 
 @Injectable()

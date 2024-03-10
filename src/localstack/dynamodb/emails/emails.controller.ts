@@ -7,7 +7,7 @@ import {
   Get,
 } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
-import { EmailRequest } from 'src/dto/email-request.dto';
+import { EmailRequest } from 'src/localstack/dynamodb/emails/dto/email-request.dto';
 import { EmailsService } from './emails.service';
 
 @Controller('emails')
