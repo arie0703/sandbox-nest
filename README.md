@@ -1,13 +1,26 @@
 ## sandbox-nest
 TypeScriptによるサーバーサイド学習用リポジトリ
 
-NestJS, JESTを使って色々な検証を行う
+NestJSを使ってクラウドサービスや認証サービスの操作などを試す
 
-## Modules
+## Commands
 
-### Products
-LocalStackで立てたDynamoDBテーブル（Products）を操作するモジュール
+`yarn start:dev`
 
-事前に以下のエンドポイントにLocalStackのリソースを立てる必要がある。
+アプリケーションの起動(`localhost`)
 
-`http://localhost:4566`
+`yarn nest g ${SCHEMATICS} ${NAME}`
+
+controller, module, serviceなどを作成する
+
+## Description
+
+### `src/config/env-validator`
+
+アプリケーション起動時に環境変数のバリデーションを行う
+
+### `src/google/auth`
+
+Googleログインを行うAPIz
+
+
