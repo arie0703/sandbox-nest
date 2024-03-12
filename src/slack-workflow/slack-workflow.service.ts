@@ -1,7 +1,7 @@
 import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
-import { WorkflowRequest } from 'src/dto/workflow-request.dto';
+import { WorkflowRequest } from 'src/slack-workflow/dto/workflow-request.dto';
 
 @Injectable()
 export class SlackWorkflowService {

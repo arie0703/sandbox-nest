@@ -1,7 +1,7 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Client } from '@notionhq/client';
-import { NotionRequest } from 'src/dto/notion-request.dto';
+import { NotionRequest } from 'src/notion-view/dto/notion-request.dto';
 @Injectable()
 export class NotionViewService {
   notionSecret: string;

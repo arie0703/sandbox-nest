@@ -1,6 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
-import { NotionRequest } from 'src/dto/notion-request.dto';
+import { NotionRequest } from 'src/notion-view/dto/notion-request.dto';
 import { NotionViewService } from './notion-view.service';
 
 @Controller('notion-view')
