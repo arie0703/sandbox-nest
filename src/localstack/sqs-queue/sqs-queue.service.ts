@@ -1,13 +1,11 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus } from '@nestjs/common';
 import { SqsService } from '@ssut/nestjs-sqs';
-import { NewRelicService } from 'src/utils/newrelic/newrelic.service';
-@Injectable()
+
 export class SqsQueueService {
   apiName: string;
   constructor(
     private readonly sqsService: SqsService,
-    private readonly newrelicService: NewRelicService,
-  ) {}
+  ) { }
 
   /**
    * SQSにキューを登録する
@@ -20,7 +18,6 @@ export class SqsQueueService {
       messageInfo = await this.sqsService.send('sandbox-nest', {
         id: (+new Date()).toString(),
         body: { message: 'hoge', status: 'success' },
-        messageAttributes: this.newrelicService.makeSQSMessageAttributes(),
       });
 
       console.log(messageInfo);
