@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package Snack;
+
+service SnacksService {
+  rpc FindOne (SnackById) returns (Snack) {}
+}
+
+message SnackById {
+  int32 id = 1;
+}
+
+message Snack {
+  int32 id = 1;
+  string name = 2;
+}
