@@ -7,7 +7,7 @@ services:
     environment:
       - MYSQL_USER=sandbox
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-      - MYSQL_DATABASE=mart
+      - MYSQL_DATABASE=sandbox-nest
       - MYSQL_ROOT_PASSWORD=develop
       - MYSQL_PASSWORD=develop
     ports:
@@ -19,7 +19,7 @@ services:
     platform: linux/x86_64
     networks:
       - mysql-network
-    command: mysql -hmysql -usandbox -pdevelop mart
+    command: mysql -hmysql -usandbox -pdevelop sandbox-nest
 
 networks:
   mysql-network:
