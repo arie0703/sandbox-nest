@@ -1,12 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CartItem, PrismaClient } from '@prisma/client';
-import { CustomerRequest } from './dto/customer-request.dto';
+import { CustomerRequest, CustomerResponse } from './dto/customer.dto';
 
 const prisma = new PrismaClient()
 @Injectable()
 export class MartService {
 
-  async addProductToCart(request: CustomerRequest): Promise<object> {
+  async addProductToCart(request: CustomerRequest): Promise<CustomerResponse> {
 
     await prisma.cartItem.create(
       {
@@ -23,13 +23,23 @@ export class MartService {
     }
   }
 
-  async order(request: CustomerRequest): Promise<object> {
+  async order(request: CustomerRequest): Promise<CustomerResponse> {
 
     const cartItems = await prisma.cartItem.findMany({
       where: {
         customerId: request.customerId
       }
     })
+
+    if (cartItems.length === 0) {
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          error: "カートに商品が入っていません",
+        },
+        400,
+      );
+    }
 
     // 注文データを作成する
     const order = await prisma.order.create({
@@ -68,6 +78,7 @@ export class MartService {
         })
       ]);
     } finally {
+
       // 注文の代金を確定させる
       await prisma.order.update({
         where: {
@@ -86,7 +97,8 @@ export class MartService {
 
     return {
       status: 200,
-      message: "商品を注文しました"
+      message: "商品を注文しました",
+      detail: `注文料金は${billingAmount}円です`
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { MartService } from './mart.service';
-import { CustomerRequest } from './dto/customer-request.dto';
+import { CustomerRequest } from './dto/customer.dto';
 import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('mart')
