@@ -14,13 +14,38 @@ services:
       - "3306:3306"
     networks:
       - mysql-network
+  mysql-test:
+    image: mysql:8.0.27
+    platform: linux/x86_64
+    container_name: mysql-test
+    environment:
+      - MYSQL_USER=test
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=sandbox-nest
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_PASSWORD=test
+      - MYSQL_TCP_PORT=3306
+    ports:
+      - "3307:3306"
+    expose:
+      - 3307
+    networks:
+      - mysql-test-network
   mysql-cli:
     image: mysql:8.0.27
     platform: linux/x86_64
     networks:
       - mysql-network
     command: mysql -hmysql -usandbox -pdevelop sandbox-nest
+  mysql-test-cli:
+    image: mysql:8.0.27
+    platform: linux/x86_64
+    networks:
+      - mysql-test-network
+    command: mysql -hmysql-test -utest -ptest sandbox-nest
 
 networks:
   mysql-network:
+    driver: bridge
+  mysql-test-network:
     driver: bridge

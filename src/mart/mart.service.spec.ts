@@ -15,4 +15,14 @@ describe('MartService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('should add product to cart', async () => {
+    const request = {
+      productId: 1,
+      customerId: 1,
+    }
+    const response = await service.addProductToCart(request);
+    expect(response.status).toBe(201);
+    expect(response.message).toBe("カートに商品を追加しました");
+  });
 });
