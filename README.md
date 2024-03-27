@@ -21,6 +21,22 @@ controller, module, serviceなどを作成する
 
 ### `src/google/auth`
 
-Googleログインを行うAPIz
+Googleログインを行うAPI
+
+### `src/mart`
+
+ECサイトを想定したAPI
+
+ドメイン駆動設計の学習・実践として開発を進める
+
+## DB
+
+MySQLを起動する
+
+`docker-compose up -d`
+
+MySQLを操作する
+
+`docker-compose run mysql-cli`
 
 
