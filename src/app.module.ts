@@ -10,6 +10,7 @@ import { NotionViewModule } from './notion-view/notion-view.module';
 import { AuthModule } from './google/auth/auth.module';
 import { GrpcController } from './grpc/grpc.controller';
 import { GrpcModule } from './grpc/grpc.module';
+import { MartModule } from './mart/mart.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { GrpcModule } from './grpc/grpc.module';
     NotionViewModule,
     AuthModule,
     GrpcModule,
+    MartModule,
   ],
   controllers: [AppController, GrpcController],
   providers: [AppService],
